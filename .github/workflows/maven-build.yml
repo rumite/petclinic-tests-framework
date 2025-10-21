@@ -29,3 +29,19 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml -pl '!integration-tests,!ui-tests'
+
+  integration-tests:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run integration tests module
+        run: mvn -B verify -pl integration-tests --file pom.xml
+
+  ui-tests:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run UI tests module
+        run: mvn -B verify -pl ui-tests --file pom.xml
