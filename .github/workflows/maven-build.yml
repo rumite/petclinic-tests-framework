@@ -44,4 +44,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run UI tests module
-        run: mvn -B verify -pl ui-tests --file pom.xml
+        run: mvn -B verify -pl ui-tests --file pom.xml -Dheadless=true
