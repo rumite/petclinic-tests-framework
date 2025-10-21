@@ -1,13 +1,12 @@
 import helper.BaseTest;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 public class UITest extends BaseTest {
 
-    @Before
+    @BeforeMethod
     public void setUpTest() {
         setUp();
         driver.get("http://localhost:8080");
@@ -16,10 +15,10 @@ public class UITest extends BaseTest {
     @Test
     public void mainPageTitleTest() {
         String title = driver.getTitle();
-        assertEquals("PetClinic :: a Spring Framework demonstration", title);
+        Assert.assertEquals(title,"PetClinic :: a Spring Framework demonstration");
     }
 
-    @After
+    @AfterMethod
     public void tearDownTest() {
         tearDown();
     }
