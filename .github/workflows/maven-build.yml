@@ -44,4 +44,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run UI tests module
+        with:
+          headless: true
+          java-version: 17
+          distribution: temurin
+          cache: maven
         run: mvn -B verify -pl ui-tests --file pom.xml -Dheadless=true
