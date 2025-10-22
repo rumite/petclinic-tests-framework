@@ -43,7 +43,7 @@ jobs:
     needs: build
     steps:
       - uses: actions/checkout@v4
-      - name: Run UI tests module
+      - name: Run UI tests module!
         with:
           headless: true
           java-version: 17
