@@ -43,11 +43,5 @@ jobs:
     needs: build
     steps:
       - uses: actions/checkout@v4
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
-        with:
-          java-version: '17'
-          distribution: 'adopt'
-          cache: maven
       - name: Run UI tests module
         run: mvn -B verify -pl ui-tests --file pom.xml -Dheadless=true
