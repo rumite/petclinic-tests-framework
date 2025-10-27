@@ -4,11 +4,13 @@ import config.Config;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.slf4j.Logger;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
     protected WebDriver driver;
+    private static final Logger logger = org.slf4j.LoggerFactory.getLogger(BaseTest.class);
 
     @BeforeMethod
     public void setUp() {
@@ -17,7 +19,8 @@ public class BaseTest {
         ChromeOptions options = new ChromeOptions();
 
         if (headless) {
-            options.addArguments("--headless");
+            logger.info("Running in headless mode.");
+            options.addArguments("--headless=new");
         }
 
         driver = new ChromeDriver(options);
