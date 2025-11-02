@@ -11,6 +11,7 @@ import org.testng.annotations.BeforeMethod;
 public class BaseTest {
     protected WebDriver driver;
     private static final Logger logger = org.slf4j.LoggerFactory.getLogger(BaseTest.class);
+    String baseUrl = Config.getBaseUrl();
 
     @BeforeMethod
     public void setUp() {
@@ -25,7 +26,7 @@ public class BaseTest {
 
         driver = new ChromeDriver(options);
 
-        driver.get("http://localhost:8080");
+        driver.get(baseUrl);
     }
 
     @AfterMethod
